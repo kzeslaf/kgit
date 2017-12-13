@@ -46,10 +46,14 @@ def list_git_repos(path):
 
 def is_git_repo(path):
     """..."""
+    abspath = os.path.abspath
+    exists = os.path.exists
+    join = os.path.join
+
     while path != '' and path != '/' and path[1:] != ":\\":
-        if os.path.exists(os.path.join(path, '.git')):
+        if exists(join(path, '.git')):
             return True
-        path = os.path.abspath(os.path.join(path, '..'))
+        path = abspath(join(path, '..'))
     return False
 
 
@@ -58,9 +62,9 @@ def is_git_repo(path):
 #
 
 
-def git_pull(path_list):
+def git_pull(paths):
     """..."""
-    for i in path_list:
+    for i in paths:
         res = os.system(
             '( echo Directory: [{0}]; cd {0}; git pull )'.format(i))
         if res != 0:
@@ -68,9 +72,9 @@ def git_pull(path_list):
     return 0
 
 
-def git_status(path_list):
+def git_status(paths):
     """..."""
-    for i in path_list:
+    for i in paths:
         res = os.system(
             '( echo Directory: [{0}]; cd {0}; git status )'.format(i))
         if res != 0:
