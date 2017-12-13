@@ -61,7 +61,7 @@ def is_working_copy(path):
 #
 
 
-def git_pull(path_list, params):
+def git_pull(path_list):
     """..."""
     for i in path_list:
         res = os.system(
@@ -71,7 +71,7 @@ def git_pull(path_list, params):
     return 0
 
 
-def git_status(path_list, params):
+def git_status(path_list):
     """..."""
     for i in path_list:
         res = os.system(
@@ -95,20 +95,13 @@ def main():
         (['stat', 'status'], git_status),
     ]
 
-    #
-    #
-    #
     if is_working_copy(cwd):
         return os.system('git ' + ' '.join(sys.argv[1:]))
 
-    #
-    #
-    #
-    wc_list = sorted(list_working_copies(cwd))
-
-    for i in functions:
-        if sys.argv[1] in i[0]:
-            return i[1](wc_list, sys.argv[2:])
+    else:
+        for i in functions:
+            if sys.argv[1] in i[0]:
+                return i[1](sorted(list_working_copies(cwd)))
 
     raise Exception('Unknown command: {}'.format(sys.argv[1:]))
 
