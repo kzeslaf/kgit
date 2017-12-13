@@ -25,7 +25,6 @@ import traceback
 
 RES_OK = 0
 RES_ERROR = 1
-RES_INVARG = 2
 
 
 #
@@ -33,21 +32,19 @@ RES_INVARG = 2
 #
 
 
-def list_working_copies(path):
+def list_git_repos(path):
     """..."""
     result = []
+    join = os.path.join
 
     for i in os.listdir(path):
-        p = os.path.join(path, i)
-        p = os.path.join(p, '.git')
-
-        if os.path.exists(p):
+        if os.path.exists(join(join(path, i), '.git')):
             result.append(i)
 
     return result
 
 
-def is_working_copy(path):
+def is_git_repo(path):
     """..."""
     while path != '' and path != '/' and path[1:] != ":\\":
         if os.path.exists(os.path.join(path, '.git')):
@@ -92,16 +89,16 @@ def main():
 
     functions = [
         (['pull'], git_pull),
-        (['stat', 'status'], git_status),
+        (['status', 'stat'], git_status),
     ]
 
-    if is_working_copy(cwd):
+    if is_git_repo(cwd):
         return os.system('git ' + ' '.join(sys.argv[1:]))
 
     else:
         for i in functions:
             if sys.argv[1] in i[0]:
-                return i[1](sorted(list_working_copies(cwd)))
+                return i[1](sorted(list_git_repos(cwd)))
 
     raise Exception('Unknown command: {}'.format(sys.argv[1:]))
 
