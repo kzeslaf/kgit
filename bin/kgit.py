@@ -116,7 +116,7 @@ if __name__ == '__main__':
     try:
         res = main()
     except Exception as e:
-        print(e)
+        print e
         traceback.print_exc()
         sys.exit(RES_ERROR)
 
