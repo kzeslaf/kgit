@@ -15,7 +15,6 @@ Commands outside repository directory:
 
 import os
 import sys
-import traceback
 
 
 #
@@ -114,11 +113,7 @@ def main():
 
 if __name__ == '__main__':
     try:
-        res = main()
-    except Exception as e:
-        print e
-        traceback.print_exc()
+        sys.exit(main())
+    except Exception as exc:
+        print exc
         sys.exit(RES_ERROR)
-
-    if res != RES_OK:
-        sys.exit(res)
