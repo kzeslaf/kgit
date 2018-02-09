@@ -17,18 +17,30 @@ import os
 import sys
 
 
-#
-# Constats
-#
+########################
+# Constants
+########################
 
 
 RES_OK = 0
-RES_ERROR = 1
+RES_INVALID_ARG = 2
+
+COMMAND = """
+(
+    echo -------------------------;
+    echo - {0};
+    echo -------------------------;
+    echo;
+    cd {0};
+    git {1};
+    echo;
+)
+"""
 
 
-#
+########################
 # Utils Functions
-#
+########################
 
 
 def list_git_repos(path):
@@ -56,34 +68,32 @@ def is_git_repo(path):
     return False
 
 
-#
+########################
 # Command Functions
-#
+########################
 
 
 def git_pull(paths):
     """..."""
-    for i in paths:
-        res = os.system(
-            '( echo Directory: [{0}]; cd {0}; git pull )'.format(i))
-        if res != 0:
+    for p in paths:
+        res = os.system(COMMAND.format(p, "pull"))
+        if res != RES_OK:
             return res
-    return 0
+    return RES_OK
 
 
 def git_status(paths):
     """..."""
-    for i in paths:
-        res = os.system(
-            '( echo Directory: [{0}]; cd {0}; git status )'.format(i))
-        if res != 0:
+    for p in paths:
+        res = os.system(COMMAND.format(p, "status"))
+        if res != RES_OK:
             return res
-    return 0
+    return RES_OK
 
 
+########################
 #
-#
-#
+########################
 
 
 def main():
@@ -103,17 +113,14 @@ def main():
             if sys.argv[1] in i[0]:
                 return i[1](sorted(list_git_repos(cwd)))
 
-    raise Exception('Unknown command: {}'.format(sys.argv[1:]))
+    print 'Unknown command: {}'.format(sys.argv[1:])
+    return RES_INVALID_ARG
 
 
-#
+########################
 # Main
-#
+########################
 
 
 if __name__ == '__main__':
-    try:
-        sys.exit(main())
-    except Exception as exc:
-        print exc
-        sys.exit(RES_ERROR)
+    sys.exit(main())
