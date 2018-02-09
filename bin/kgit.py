@@ -113,7 +113,7 @@ def main():
             if sys.argv[1] in i[0]:
                 return i[1](sorted(list_git_repos(cwd)))
 
-    print 'Unknown command: {}'.format(sys.argv[1:])
+    print('Unknown command: {}'.format(sys.argv[1:]))
     return RES_INVALID_ARG
 
 
