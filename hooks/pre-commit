@@ -1,0 +1,14 @@
+#!/bin/bash
+
+NAME=$(git config --get user.name)
+EMAIL=$(git config --get user.email)
+
+if [ -z "$NAME" ]; then
+    echo "user.name is not configured, quit ..."
+    exit 1
+fi
+
+if [ -z "$EMAIL" ]; then
+    echo "user.email is not configured, quit ..."
+    exit 1
+fi
