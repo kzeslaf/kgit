@@ -36,3 +36,4 @@ git config --global core.hooksPath PATH_TO_HOOKS_DIR
 ## Links
 
 * [Git Tools - Signing Your Work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work)
+* [Kernel Maintainer PGP guide](https://www.kernel.org/doc/html/latest/process/maintainer-pgp-guide.html)
