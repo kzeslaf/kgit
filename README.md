@@ -2,29 +2,36 @@
 
 Docs about my git environment and wrapper over git command.
 
-## TODO
-
-* --verify-signatures?
-* config option `merge.verifySignatures` (https://git-scm.com/docs/git-config)
-* check in hook if `commit.gpgSign` is configured
-* move `commit.gpgSign` from --global to repo config
-
 ## How to set up my environment
 
-1. `git config --global commit.gpgSign true`
-2. `git config --global core.hooksPath PATH_TO_HOOKS_DIR`
+### Global configuration
+
+Install hooks:
+```
+git config --global core.hooksPath PATH_TO_HOOKS_DIR
+```
+
+### Repository configuration
+
+Set local config options:
+
+* `user.name`
+* `user.email`
+* `commit.gpgSign`
+* `merge.verifySignatures`
 
 ## Hooks
 
-To use hooks call following command:
+To install hooks call following command:
 ```sh
 git config --global core.hooksPath PATH_TO_HOOKS_DIR
 ```
 
 ### Available hooks
 
-- [pre-commit hook](hooks/pre-commit): check if `user.name` and `user.email` are
-  configured
+- [pre-commit hook](hooks/pre-commit)
+    - check if `user.name`, `user.email`, `commit.gpgSign` and
+  `merge.verifySignatures` are configured
 
 ## Links
 

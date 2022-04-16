@@ -1,14 +1,18 @@
 #!/bin/bash
 
-NAME=$(git config --get user.name)
-EMAIL=$(git config --get user.email)
+declare -a CONFIG_KEYS=(
+    "user.name"
+    "user.email"
+    "commit.gpgSign"
+    "merge.verifySignatures"
+    )
 
-if [ -z "$NAME" ]; then
-    echo "user.name is not configured, quit ..."
-    exit 1
-fi
+for i in "${CONFIG_KEYS[@]}"
+do
+    VAL=$(git config --get "$i")
 
-if [ -z "$EMAIL" ]; then
-    echo "user.email is not configured, quit ..."
-    exit 1
-fi
+    if [ -z "$VAL" ]; then
+        echo "$i is not configured, quit ..."
+        exit 1
+    fi
+done
