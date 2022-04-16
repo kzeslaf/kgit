@@ -1,6 +1,6 @@
 # kgit
 
-Wrapper over git command.
+Docs about my git environment and wrapper over git command.
 
 ## How to set up my environment
 
@@ -14,6 +14,11 @@ To use hooks call following command:
 git config --global core.hooksPath PATH_TO_HOOKS_DIR
 ```
 
-Available hooks:
+### Available hooks
+
 - [pre-commit hook](hooks/pre-commit): check if `user.name` and `user.email` are
   configured
+
+## Links
+
+* [Git Tools - Signing Your Work](https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work)
