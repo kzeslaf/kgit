@@ -2,6 +2,13 @@
 
 Docs about my git environment and wrapper over git command.
 
+## TODO
+
+* --verify-signatures?
+* config option `merge.verifySignatures` (https://git-scm.com/docs/git-config)
+* check in hook if `commit.gpgSign` is configured
+* move `commit.gpgSign` from --global to repo config
+
 ## How to set up my environment
 
 1. `git config --global commit.gpgSign true`
