@@ -1,6 +1,6 @@
 # kgit
 
-Docs about my git environment and wrapper over git command.
+My _git_ configuration and tools.
 
 ## How to set up my environment
 
