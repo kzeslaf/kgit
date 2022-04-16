@@ -2,6 +2,11 @@
 
 Wrapper over git command.
 
+## How to set up my environment
+
+1. `git config --global commit.gpgSign true`
+2. `git config --global core.hooksPath PATH_TO_HOOKS_DIR`
+
 ## Hooks
 
 To use hooks call following command:
