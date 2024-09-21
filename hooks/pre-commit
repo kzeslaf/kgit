@@ -3,6 +3,7 @@
 declare -a CONFIG_KEYS=(
     "user.name"
     "user.email"
+    "user.signingkey"
     "commit.gpgSign"
     "merge.verifySignatures"
     )

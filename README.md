@@ -30,8 +30,8 @@ git config --global core.hooksPath PATH_TO_HOOKS_DIR
 ### Available hooks
 
 - [pre-commit hook](hooks/pre-commit)
-    - check if `user.name`, `user.email`, `commit.gpgSign` and
-      `merge.verifySignatures` are configured
+    - check if `user.name`, `user.email`, `user.signingkey`, `commit.gpgSign`
+      and `merge.verifySignatures` are configured
 
 ## Links
 
